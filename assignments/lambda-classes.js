@@ -34,6 +34,10 @@ class Instructor extends Person{
      grade(student,subject){
           return `${student.name} receives a perfect score on ${subject}`;     
      }
+     score(student){
+          const randomNumber = Math.floor(Math.random()*101)-80;
+          return +randomNumber + +student.grade;
+     }
 }
 
 // Student
@@ -42,7 +46,8 @@ class Students extends Person{
           super(props);
           this.previousBackground = props.previousBackground;
           this.className = props.className;
-          this.favSubjects = props.favSubjects;        
+          this.favSubjects = props.favSubjects; 
+          this.grade = props.grade;       
      }
      listSubjects(){
           this.favSubjects.forEach(function(subject){                    
@@ -55,7 +60,6 @@ class Students extends Person{
      sprintChallenge(subject){
           return `${this.name} has begun sprint challenge on ${subject}`;   
      }
-     
 }
 
 // Project Manager
@@ -111,7 +115,8 @@ const kevin = new Students({
      location: 'Santa Barbara',
      previousBackground: 'biology',
      className: 'WEB23',
-     favSubjects: ['HTML', 'CSS', 'Javascript']
+     favSubjects: ['HTML', 'CSS', 'Javascript'],
+     grade:80
 });
 const gabe = new Students({
      name: 'Gabe',
@@ -119,7 +124,8 @@ const gabe = new Students({
      location: 'Santa Barbara',
      previousBackground: 'economics',
      className: 'WEBXY',
-     favSubjects: ['Math', 'Data Science', 'Statistics']
+     favSubjects: ['Math', 'Data Science', 'Statistics'],
+     grade:90
 });
 const rika = new Students({
      name: 'Rika',
@@ -127,7 +133,8 @@ const rika = new Students({
      location: 'Santa Barbara',
      previousBackground: 'microbiology',
      className: 'WEBXX',
-     favSubjects: ['Immunology', 'Genetics', 'MatLab']
+     favSubjects: ['Immunology', 'Genetics', 'MatLab'],
+     grade:85
 });
 
 // Project Manager Objects
@@ -164,3 +171,7 @@ console.log(ricky.grade(kevin,'Responsive Design'));
 console.log(kevin.listSubjects());
 console.log(gabe.sprintChallenge('python'));
 console.log(brit.debugsCode(kevin, 'javascript'));
+
+// Sprint test
+console.log(ricky.score(kevin)); 
+console.log(brit.score(gabe));
